@@ -4,6 +4,7 @@ import { useAppSelector } from "../store/store";
 import ChangePassword from "../components/ChangePassword";
 import UserProfile from "../components/UserProfile";
 import { ErrorBoundary } from "react-error-boundary";
+import FallbackUI from "../components/FallbackUI";
 
 const Profile = () => {
   const { isAuthenticated } = useAppSelector((state) => state.auth);
@@ -38,7 +39,7 @@ const Profile = () => {
   }
 
   return (
-    <ErrorBoundary fallback={<p>⚠️Something went wrong</p>}>
+    <ErrorBoundary fallback={<FallbackUI/>}>
     <Box>
       <UserProfile data={data.data} />
       <ChangePassword user={data.data} />
